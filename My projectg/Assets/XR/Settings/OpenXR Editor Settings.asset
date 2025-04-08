@@ -19,4 +19,4 @@ MonoBehaviour:
   - featureSets:
     - com.meta.openxr.featureset.metaxr
   - featureSets: []
-  m_vulkanAdditionalGraphicsQueue: 0
+  m_vulkanAdditionalGraphicsQueue: 1
