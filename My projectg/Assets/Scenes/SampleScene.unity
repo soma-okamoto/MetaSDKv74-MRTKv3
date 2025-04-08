@@ -1540,6 +1540,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1914185765757484007, guid: 9c081b23e9a45224da4ad131b1575501, type: 3}
   m_PrefabInstance: {fileID: 496188457}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &747109200 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1914185765757484006, guid: 9c081b23e9a45224da4ad131b1575501, type: 3}
+  m_PrefabInstance: {fileID: 496188457}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &747109201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1788,7 +1793,7 @@ MonoBehaviour:
   <OnDisabled>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
-  hostTransform: {fileID: 0}
+  hostTransform: {fileID: 747109200}
   allowedManipulations: 7
   allowedInteractionTypes: -2147483641
   rigidbodyMovementType: 0
@@ -1847,6 +1852,10 @@ PrefabInstance:
     - target: {fileID: 612292278830881201, guid: 5d854457bc8bd7348834059794e11b81, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 643476236373982425, guid: 5d854457bc8bd7348834059794e11b81, type: 3}
+      propertyPath: currentIconName
+      value: Icon 132
       objectReference: {fileID: 0}
     - target: {fileID: 1595598327964609820, guid: 5d854457bc8bd7348834059794e11b81, type: 3}
       propertyPath: m_Name
@@ -1932,6 +1941,10 @@ PrefabInstance:
       propertyPath: trackedHandedness
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4328382539630188857, guid: 5d854457bc8bd7348834059794e11b81, type: 3}
+      propertyPath: m_text
+      value: "\uF6AA"
+      objectReference: {fileID: 0}
     - target: {fileID: 5371620834130424240, guid: 5d854457bc8bd7348834059794e11b81, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1983,6 +1996,12 @@ PrefabInstance:
     - target: {fileID: 8071713752673085539, guid: 5d854457bc8bd7348834059794e11b81, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8934337732093951732, guid: 5d854457bc8bd7348834059794e11b81, type: 3}
+      propertyPath: m_text
+      value: 'Bottle
+
+        Debug'
       objectReference: {fileID: 0}
     - target: {fileID: 8934337732714475268, guid: 5d854457bc8bd7348834059794e11b81, type: 3}
       propertyPath: m_IsActive
@@ -2227,6 +2246,7 @@ GameObject:
   - component: {fileID: 1279096068}
   - component: {fileID: 1279096067}
   - component: {fileID: 1279096066}
+  - component: {fileID: 1279096069}
   m_Layer: 0
   m_Name: BorrowObject
   m_TagString: Untagged
@@ -2658,7 +2678,7 @@ MonoBehaviour:
   handType: -1
   proximityType: -1
   executionOrder: 0
-  constraintOnRotation: -1
+  constraintOnRotation: 1
   useLocalSpaceForConstraint: 0
 --- !u!114 &1279096068
 MonoBehaviour:
@@ -2678,6 +2698,23 @@ MonoBehaviour:
   minimumScale: {x: 1, y: 1, z: 1}
   maximumScale: {x: 1, y: 1, z: 1}
   relativeToInitialState: 1
+--- !u!114 &1279096069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279096058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4461cef9324cf904299f3d04a3861659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handType: -1
+  proximityType: -1
+  executionOrder: 0
+  constraintOnRotation: 4
+  useLocalSpaceForConstraint: 0
 --- !u!1 &1455497433 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4447837276249248044, guid: 390bf4c6c1d73984297af5b3eee33a38, type: 3}
