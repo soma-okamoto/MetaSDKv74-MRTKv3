@@ -210,26 +210,6 @@ public class handTracking : MonoBehaviour
         maincam.GetComponent<Renderer>();
         middleObject.GetComponent<Renderer>().enabled = false;
 
-
-        /*
-                thumbObject.GetComponent<Renderer>().enabled = false;
-                indexObject.GetComponent<Renderer>().enabled = false;
-                ringObject.GetComponent<Renderer>().enabled = false;
-                pinkyObject.GetComponent<Renderer>().enabled = false;*/
-
-
-        /*var aggregator = XRSubsystemHelpers.HandsAggregatorSubsystem;
-
-        if (aggregator != null &&
-    aggregator.TryGetJoint(TrackedHandJoint.MiddleProximal, XRNode.LeftHand, out HandJointPose middlepose))
-
-        {
-            middleObject.GetComponent<Renderer>().enabled = true;
-            Quaternion rotation = GetHandRotationFromOrigin();
-            middleObject.transform.position = (middlepose.Position + AirTap_Distance.middlePoint) / 3;
-            middleObject.transform.rotation = middlepose.Rotation;
-            handPositionFromOrigin.position = middleObject.transform.position;
-        }*/
         // HandsAggregatorSubsystem 経由で関節情報を取得
         var aggregator = XRSubsystemHelpers.HandsAggregator;
         if (aggregator != null &&
@@ -237,24 +217,14 @@ public class handTracking : MonoBehaviour
         {
             middleObject.GetComponent<Renderer>().enabled = true;
             Quaternion rotation = GetHandRotationFromOrigin();
-            middleObject.transform.position = (middlepose.Position + AirTap_Distance.middlePoint) / 3;
+            //middleObject.transform.position = (middlepose.Position + AirTap_Distance.middlePoint) / 3;
+            middleObject.transform.position = (middlepose.Position + AirTap_Distance.middlePoint) / 2;
+
+
             middleObject.transform.rotation = middlepose.Rotation;
             handPositionFromOrigin.position = middleObject.transform.position;
         }
 
-
-
-
-        /*//右手人差し指
-
-        if (HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, Handedness.Right, out MixedRealityPose indexpose))
-        {
-            indexObject.SetActive(true);
-            indexObject.GetComponent<Renderer>().enabled = true;
-            indexObject.transform.position = indexpose.Position;
-            indexObject.transform.rotation = indexpose.Rotation;
-
-        }*/
 
     }
 
