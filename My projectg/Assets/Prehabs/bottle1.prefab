@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 4422585438524863428}
   - component: {fileID: 6610311162248439217}
   - component: {fileID: 6385482371108949869}
-  - component: {fileID: 3040253708065463253}
   - component: {fileID: 6598120630716868736}
   m_Layer: 0
   m_Name: bottle1
@@ -104,7 +103,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -338,7 +337,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   hostTransform: {fileID: 5941409319070769944}
-  allowedManipulations: 1
+  allowedManipulations: -1
   allowedInteractionTypes: -2147483641
   rigidbodyMovementType: 0
   applyTorque: 1
@@ -381,24 +380,7 @@ MonoBehaviour:
   handType: -1
   proximityType: -1
   executionOrder: 0
-  constraintOnRotation: 4
-  useLocalSpaceForConstraint: 0
---- !u!114 &3040253708065463253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5942948548269898092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4461cef9324cf904299f3d04a3861659, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handType: -1
-  proximityType: -1
-  executionOrder: 0
-  constraintOnRotation: 1
+  constraintOnRotation: -1
   useLocalSpaceForConstraint: 0
 --- !u!54 &6598120630716868736
 Rigidbody:
