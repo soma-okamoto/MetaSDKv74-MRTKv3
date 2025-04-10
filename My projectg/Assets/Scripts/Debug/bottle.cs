@@ -4,6 +4,7 @@ public class bottle : MonoBehaviour
 {
     public GameObject bottlePrefab;  // プレハブ参照
     public float spawnDistance = 0.5f;  // 顔からの距離
+    public GameObject parentObject;  // 生成されたオブジェクトの親オブジェクト（ヒエラルキー内）
 
     public void SpawnBottle()
     {
@@ -23,7 +24,19 @@ public class bottle : MonoBehaviour
         Quaternion horizontalRotation = Quaternion.Euler(0, cameraTransform.eulerAngles.y, 0);
 
         // 水平に生成
-        Instantiate(bottlePrefab, spawnPosition, horizontalRotation);
-        Debug.Log("spown");
+        GameObject spawnedBottle = Instantiate(bottlePrefab, spawnPosition, horizontalRotation);
+
+        // ヒエラルキー内での親オブジェクトを設定
+        if (parentObject != null)
+        {
+            spawnedBottle.transform.SetParent(parentObject.transform);
+            //Debug.Log("生成されたオブジェクトをヒエラルキー内で親に設定しました。");
+        }
+        else
+        {
+            Debug.LogWarning("親オブジェクトが設定されていません！");
+        }
+
+        //Debug.Log("spown");
     }
 }

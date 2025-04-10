@@ -13,6 +13,7 @@ public class OperationDebug : MonoBehaviour
         {
             // Œ»İ‚Ìó‘Ô‚ğ”½“]
             targetObject.SetActive(!targetObject.activeSelf);
+            Debug.Log("OperationUI‚ğ”½“]");
         }
     }
 }
