@@ -3262,6 +3262,41 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1542380037689179114, guid: 1990cb1350a9e424dbe4c51a5ece42f0, type: 3}
   m_PrefabInstance: {fileID: 108190318}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2004090569 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2361260633207218417, guid: 9c081b23e9a45224da4ad131b1575501, type: 3}
+  m_PrefabInstance: {fileID: 661420623456043382}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2004090570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2004090569}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c8a10bdd6850674590a7d931a87adb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateLinkedTransform: 0
+  moveLerpTime: 0.1
+  rotateLerpTime: 0.1
+  scaleLerpTime: 0
+  maintainScaleOnInitialization: 1
+  smoothing: 1
+  lifetime: 0
+  referenceDirection: 1
+  minDistance: 1
+  maxDistance: 2
+  minViewDegrees: 0
+  maxViewDegrees: 30
+  aspectV: 1
+  ignoreAngleClamp: 0
+  ignoreDistanceClamp: 0
+  useFixedVerticalPosition: 0
+  fixedVerticalPosition: -0.4
+  orientToReferenceDirection: 0
 --- !u!1 &4304867412200100
 GameObject:
   m_ObjectHideFlags: 0
@@ -4407,6 +4442,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: LogPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 3763863822133307882, guid: 9c081b23e9a45224da4ad131b1575501, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4213987432630893219, guid: 9c081b23e9a45224da4ad131b1575501, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8615392476786099962, guid: 9c081b23e9a45224da4ad131b1575501, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.8243216
@@ -4451,6 +4494,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2361260633207218417, guid: 9c081b23e9a45224da4ad131b1575501, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2004090570}
     - targetCorrespondingSourceObject: {fileID: 4473544853136913812, guid: 9c081b23e9a45224da4ad131b1575501, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
