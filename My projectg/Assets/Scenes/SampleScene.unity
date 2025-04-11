@@ -11358,6 +11358,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 107274740196664607, guid: 8f77c6e61253e61488a5441b788aba35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 127077834764938883, guid: 8f77c6e61253e61488a5441b788aba35, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -11366,6 +11370,10 @@ PrefabInstance:
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1896846447}
+    - target: {fileID: 668486324007711772, guid: 8f77c6e61253e61488a5441b788aba35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 783451911813668071, guid: 8f77c6e61253e61488a5441b788aba35, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -11422,6 +11430,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4113801199919901688, guid: 8f77c6e61253e61488a5441b788aba35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4176104510102305156, guid: 8f77c6e61253e61488a5441b788aba35, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.07699374
@@ -11462,6 +11474,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5237496062185642201, guid: 8f77c6e61253e61488a5441b788aba35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5465153195851739918, guid: 8f77c6e61253e61488a5441b788aba35, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -11476,15 +11492,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5791820187286336151, guid: 8f77c6e61253e61488a5441b788aba35, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.26
+      value: -0.0811
       objectReference: {fileID: 0}
     - target: {fileID: 5791820187286336151, guid: 8f77c6e61253e61488a5441b788aba35, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.098
       objectReference: {fileID: 0}
     - target: {fileID: 5791820187286336151, guid: 8f77c6e61253e61488a5441b788aba35, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.53
+      value: 0.151
       objectReference: {fileID: 0}
     - target: {fileID: 5791820187286336151, guid: 8f77c6e61253e61488a5441b788aba35, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11566,6 +11582,10 @@ PrefabInstance:
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 274688873}
+    - target: {fileID: 8840824668573922912, guid: 8f77c6e61253e61488a5441b788aba35, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8909744028289466725, guid: 8f77c6e61253e61488a5441b788aba35, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
