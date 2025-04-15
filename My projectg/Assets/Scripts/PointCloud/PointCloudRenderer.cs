@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using RosSharp.RosBridgeClient;
+using System.Diagnostics;
 
 public class PointCloudRenderer : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class PointCloudRenderer : MonoBehaviour
     public Vector3 BBoxSize;
     public Vector3 BBoxPos;
     public bool StopGetPointCloud = false;
-    void Start()
+    /*void Start()
     {
         // Give all the required components to the gameObject
         meshRenderer = gameObject.AddComponent<MeshRenderer>();
@@ -43,7 +44,54 @@ public class PointCloudRenderer : MonoBehaviour
         //transform.position = offset.position;
         //transform.rotation = new Quaternion(offset.rotation.x,offset.rotation.y - 180,offset.rotation.z,offset.rotation.w);
 
+    }*/
+    void Start()
+    {
+        // 安全に必要なコンポーネントを取得・生成
+        meshRenderer = GetComponent<MeshRenderer>();
+        if (meshRenderer == null)
+            meshRenderer = gameObject.AddComponent<MeshRenderer>();
+
+        mf = GetComponent<MeshFilter>();
+        if (mf == null)
+            mf = gameObject.AddComponent<MeshFilter>();
+
+        // マテリアルが設定されているかチェック
+        if (_material != null)
+        {
+            meshRenderer.material = new Material(_material);
+        }
+        else
+        {
+            UnityEngine.Debug.LogWarning("Material not assigned to PointCloudRenderer");
+        }
+
+        mesh = new Mesh
+        {
+            indexFormat = UnityEngine.Rendering.IndexFormat.UInt32
+        };
+
+        // subscriber と BoundingBox が設定されていなければ自動取得
+        if (subscriber == null)
+        {
+            subscriber = GetComponent<PointCloudSubscriber>();
+            if (subscriber == null)
+            {
+                UnityEngine.Debug.LogWarning("PointCloudSubscriber not found on this GameObject.");
+            }
+        }
+
+        if (BoundingBox == null)
+        {
+            // 子オブジェクトから探す例（使ってる構造により適宜調整）
+            BoundingBox = GetComponentInChildren<BoxCollider>();
+            if (BoundingBox == null)
+            {
+                UnityEngine.Debug.LogWarning("BoundingBox (BoxCollider) not found in children.");
+            }
+        }
     }
+
 
     IEnumerator UpdateMesh()
     {

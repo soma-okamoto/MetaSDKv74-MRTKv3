@@ -85,15 +85,15 @@ public class MoveRobotController : MonoBehaviour
         //lineRenderer_Origin.SetPosition(0, Origin.transform.position);
 
 
-        //YoubotObject.SetActive(true);
+        YoubotObject.SetActive(true);
 
-        // BoundsControl を明示的に有効化する
+        /*// BoundsControl を明示的に有効化する
         var boundsControl = YoubotObject.GetComponent<BoundsControl>();
         if (boundsControl != null && !boundsControl.enabled)
         {
             Debug.Log("BoundsControl が無効だったので有効化します");
             boundsControl.enabled = true;
-        }
+        }*/
 
         GenerateObject();
 
