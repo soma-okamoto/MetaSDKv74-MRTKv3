@@ -1,3 +1,4 @@
+using MixedReality.Toolkit.SpatialManipulation;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -32,7 +33,12 @@ public class ObjectDuplicator : MonoBehaviour
             );
 
             duplicatedObject.name = objectToDuplicate.name + "_Copy";
-
+            // ObjectManipulator を有効化
+            var manipulator = duplicatedObject.GetComponent<ObjectManipulator>();
+            if (manipulator != null)
+            {
+                manipulator.enabled = true;
+            }
             // Scaleは指定したものを適用（元のスケールを使いたいなら objectToDuplicate.transform.localScale に変更可）
             duplicatedObject.transform.localScale = scale;
 
@@ -54,5 +60,76 @@ public class ObjectDuplicator : MonoBehaviour
         {
             UnityEngine.Debug.LogWarning("objectToDuplicateが設定されていません！");
         }
+        
+        SetTopMostFirstActive_OthersInactive();
     }
+    
+
+    void SetTopMostFirstActive_OthersInactive()
+    {
+        GameObject[] allObjects = Resources.FindObjectsOfTypeAll<GameObject>();
+        List<GameObject> matches = new List<GameObject>();
+
+        foreach (GameObject obj in allObjects)
+        {
+            if (obj.name == "BoundingBoxWithTraditionalHandles(Clone)" && obj.hideFlags == HideFlags.None)
+            {
+                matches.Add(obj);
+            }
+        }
+
+        if (matches.Count == 0)
+        {
+            UnityEngine.Debug.LogWarning("BoundingBoxWithTraditionalHandles(Clone) が見つかりませんでした！");
+            return;
+        }
+
+        // 階層が浅い順にソートし、同じ深さなら見つかった順（=そのままの順）
+        matches.Sort((a, b) =>
+        {
+            int depthA = GetHierarchyDepth(a.transform);
+            int depthB = GetHierarchyDepth(b.transform);
+            return depthA.CompareTo(depthB); // depth が浅いほど先に
+        });
+
+        // 最初の1つをアクティブ、それ以外を非アクティブ
+        bool found = false;
+        foreach (var obj in matches)
+        {
+            if (!found)
+            {
+                obj.SetActive(true);
+                found = true;
+                UnityEngine.Debug.Log($"アクティブ化: {obj.name} ({GetHierarchyPath(obj.transform)})");
+            }
+            else
+            {
+                obj.SetActive(false);
+            }
+        }
+    }
+
+    int GetHierarchyDepth(Transform t)
+    {
+        int depth = 0;
+        while (t.parent != null)
+        {
+            depth++;
+            t = t.parent;
+        }
+        return depth;
+    }
+
+    string GetHierarchyPath(Transform t)
+    {
+        List<string> path = new List<string>();
+        while (t != null)
+        {
+            path.Insert(0, t.name);
+            t = t.parent;
+        }
+        return string.Join("/", path);
+    }
+
+
 }

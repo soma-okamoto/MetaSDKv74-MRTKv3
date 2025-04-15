@@ -16,7 +16,7 @@ public class OperationController : MonoBehaviour
     [SerializeField] private TextMeshPro OperationUI;
     [SerializeField] private GameObject BBox;
 
-
+    
     private bool prevBoundsControlState = true;
     private bool prevBoxColliderState = true;
     private bool prevManipulatorState = true;
@@ -39,39 +39,6 @@ public class OperationController : MonoBehaviour
     }
 
 
-   /* void Update()
-    {
-        if (BBox != null)
-        {
-            var bounds = BBox.GetComponent<BoundsControl>();
-            var manip = BBox.GetComponent<ObjectManipulator>();
-            var col = BBox.GetComponent<BoxCollider>();
-
-            Debug.Log($"[EveryFrame] BoundsControl: {bounds.enabled}, Manipulator: {manip.enabled}, Collider: {col.enabled}");
-
-            bool boundsControlState = bounds.enabled;
-            bool boxColliderState = col.enabled;
-            bool manipulatorState = manip.enabled;
-
-            if (boundsControlState != prevBoundsControlState)
-            {
-                Debug.Log("BoundsControl enabled changed: " + boundsControlState);
-                prevBoundsControlState = boundsControlState;
-            }
-
-            if (boxColliderState != prevBoxColliderState)
-            {
-                Debug.Log("BoxCollider enabled changed: " + boxColliderState);
-                prevBoxColliderState = boxColliderState;
-            }
-
-            if (manipulatorState != prevManipulatorState)
-            {
-                Debug.Log("ObjectManipulator enabled changed: " + manipulatorState);
-                prevManipulatorState = manipulatorState;
-            }
-        }
-    }*/
     public void operationButton()
     {
         //rosConnector.GetComponent<RosSharp.RosBridgeClient.BaseMovePublisher>().enabled = false;
@@ -117,6 +84,9 @@ public class OperationController : MonoBehaviour
         {
             Debug.LogWarning("BBox が null です！");
         }
+
+        GameObject target = GameObject.Find("Origin/BoundingBox/BoundingBoxWithTraditionalHandles(Clone)");
+        target.SetActive(false);
 
         Debug.Log("=== OPERATION END ===");
 

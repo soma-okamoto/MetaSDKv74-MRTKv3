@@ -41,23 +41,7 @@ public class MoveRobotController : MonoBehaviour
 
     private GameObject lastGeneratedWayPoint = null;
     private XRGrabInteractable bboxGrabInteractable;
-/*
-    private void Start()
-    {
-        bboxGrabInteractable = BBox.GetComponent<XRGrabInteractable>();
 
-        bboxGrabInteractable.selectEntered.AddListener(OnManipulationStartedHandler);
-        bboxGrabInteractable.selectExited.AddListener(OnManipulationEndedHandler);
-    }
-
-    private void OnDestroy()
-    {
-        if (bboxGrabInteractable != null)
-        {
-            bboxGrabInteractable.selectEntered.RemoveListener(OnManipulationStartedHandler);
-            bboxGrabInteractable.selectExited.RemoveListener(OnManipulationEndedHandler);
-        }
-    }*/
     public void PressRobotMoveSettingButton()
     {
         isRobotMoveSetting = true;
@@ -205,6 +189,7 @@ public class MoveRobotController : MonoBehaviour
         newWayPoint_Origin.GetComponent<XRGrabInteractable>().selectExited.AddListener(EditRouteObject);*/
         newWayPoint.GetComponent<ObjectManipulator>().selectExited.AddListener(EditRouteObject);
         newWayPoint_Origin.GetComponent<ObjectManipulator>().selectExited.AddListener(EditRouteObject);
+
 
     }
 

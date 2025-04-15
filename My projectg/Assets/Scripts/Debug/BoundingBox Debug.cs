@@ -19,8 +19,9 @@ public class BoundingBoxDebug : MonoBehaviour
         BBox.GetComponent<BoundsControl>().enabled = false;
         BBox.GetComponent<ObjectManipulator>().enabled = false;
         BBox.GetComponent<BoxCollider>().enabled = false;
+        GameObject target = GameObject.Find("Origin/BoundingBox/BoundingBoxWithTraditionalHandles(Clone)");
+        target.SetActive(false);
 
-       
         Debug.Log("BBox false");
     }
     public void ActiveBBOX()
@@ -29,7 +30,8 @@ public class BoundingBoxDebug : MonoBehaviour
         BBox.GetComponent<BoundsControl>().enabled = true;
         BBox.GetComponent<ObjectManipulator>().enabled = true;
         BBox.GetComponent<BoxCollider>().enabled = true;
-       
+        GameObject target = GameObject.Find("Origin/BoundingBox/BoundingBoxWithTraditionalHandles(Clone)");
+        target.SetActive(true);
         Debug.Log("BBox true");
 
 

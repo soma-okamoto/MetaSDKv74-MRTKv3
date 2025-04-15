@@ -1,8 +1,12 @@
-﻿/*using System.Collections;
+﻿using System.Collections;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using MixedReality.Toolkit.UX;
+using MixedReality.Toolkit.SpatialManipulation;
+using MixedReality.Toolkit.Input;
+using Microsoft.MixedReality.OpenXR;
+using UnityEngine.XR.Interaction.Toolkit;
 
 
 public class ObjectGenerationTest : MonoBehaviour
@@ -46,13 +50,13 @@ public class ObjectGenerationTest : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
         outputdata = distance.bool2string();
         camVector = Origin.transform.position;
         if (float32MultiSubscriber.messageData.Length != 0)
@@ -62,18 +66,18 @@ public class ObjectGenerationTest : MonoBehaviour
 
             for (int i = 0; i < messageData.Length / 5; i++)
             {
-                
+
                 if (i == 0)
                 {
                     //minx = (messageData[0]/640)* Screen.currentResolution.width;
                     //miny = (messageData[1]/480)* Screen.currentResolution.height;
                     //maxx = (messageData[2]/640)* Screen.currentResolution.width;
                     //maxy = (messageData[3]/480)* Screen.currentResolution.height;
-                    x = - messageData[0];
+                    x = -messageData[0];
                     //y = messageData[2]-0.6f;
                     y = messageData[2]; //キャリブレーション時使う値
                     //y = messageData[2] - 0.25f;　//実際の値
-                    z = - messageData[1];
+                    z = -messageData[1];
                     label = messageData[3];
                     id = messageData[4];
                     ObjectName = "Object" + id.ToString();
@@ -97,8 +101,10 @@ public class ObjectGenerationTest : MonoBehaviour
                             if (objectManipulator != null)
                             {
                                 // OnManipulationStartedイベントにメソッドを登録
-                                objectManipulator.OnManipulationStarted.AddListener(OnManipulationStartedHandler);
-                                objectManipulator.OnManipulationEnded.AddListener(OnManipulationEndedHandler);
+                                //objectManipulator.OnManipulationStarted.AddListener(OnManipulationStartedHandler);
+                                
+                                objectManipulator.firstSelectEntered.AddListener(OnManipulationStartedHandler);
+                                objectManipulator.lastSelectExited.AddListener(OnManipulationEndedHandler);
 
                             }
                         }
@@ -118,12 +124,12 @@ public class ObjectGenerationTest : MonoBehaviour
                 }
                 else
                 {
-                    x = - messageData[5 * i + 0];
+                    x = -messageData[5 * i + 0];
                     //y = messageData[5 * i + 2] - 0.6f;
 
                     y = messageData[5 * i + 2];//キャリブレーション時に使う値
                     //y = messageData[5 * i + 2] - 0.25f;//実際の値
-                    z = - messageData[5 * i + 1];
+                    z = -messageData[5 * i + 1];
                     label = messageData[5 * i + 3];
                     id = messageData[5 * i + 4];
 
@@ -150,8 +156,8 @@ public class ObjectGenerationTest : MonoBehaviour
                             if (objectManipulator != null)
                             {
                                 // OnManipulationStartedイベントにメソッドを登録
-                                objectManipulator.OnManipulationStarted.AddListener(OnManipulationStartedHandler);
-                                objectManipulator.OnManipulationEnded.AddListener(OnManipulationEndedHandler);
+                                objectManipulator.firstSelectEntered.AddListener(OnManipulationStartedHandler);
+                                objectManipulator.lastSelectExited.AddListener(OnManipulationEndedHandler);
                             }
                         }
 
@@ -176,7 +182,7 @@ public class ObjectGenerationTest : MonoBehaviour
                         {
                             Vector3 world_position = new Vector3(camVector.x + x, camVector.y + y, camVector.z + z);
 
-                            foreach(Vector3 objectPos in objectList.Values)
+                            foreach (Vector3 objectPos in objectList.Values)
                             {
                                 float distance = Vector3.Distance(objectPos, world_position);
                                 UnityEngine.Debug.Log("objct distance ; " + distance);
@@ -185,9 +191,9 @@ public class ObjectGenerationTest : MonoBehaviour
                                     return;
                                 }
                             }
-                            if(label == 0)
+                            if (label == 0)
                             {
-                                
+
                                 obj1 = Instantiate(Can, camVector, Quaternion.identity);
                                 //obj1.transform.localScale = Vector3.one * 1.2f;
                             }
@@ -200,7 +206,7 @@ public class ObjectGenerationTest : MonoBehaviour
                             obj1.name = ObjectName;
                             obj1.transform.parent = Origin.transform;
                             obj1.transform.localPosition = new Vector3(x, y, z);
-                            
+
                             before_obj.Add(obj1);
                             ObjectNameList.Add(obj1.name);
 
@@ -211,40 +217,50 @@ public class ObjectGenerationTest : MonoBehaviour
                             if (objectManipulator != null)
                             {
                                 // OnManipulationStartedイベントにメソッドを登録
-                                objectManipulator.OnManipulationStarted.AddListener(OnManipulationStartedHandler);
-                                objectManipulator.OnManipulationEnded.AddListener(OnManipulationEndedHandler);
+                                objectManipulator.firstSelectEntered.AddListener(OnManipulationStartedHandler);
+                                objectManipulator.lastSelectExited.AddListener(OnManipulationEndedHandler);
+
+
+
+
                             }
                         }
 
                     }
                 }
-                
+
             }
         }
     }
 
-    *//*   private void OnManipulationStartedHandler(ManipulationEventData arg0)
-       {
-           BBox.GetComponent<ObjectManipulator>().enabled = false;
-       }
-       private void OnManipulationEndedHandler(ManipulationEventData arg0)
-       {
-           BBox.GetComponent<ObjectManipulator>().enabled = true;
-       }*//*
-    private void OnManipulationStartedHandler()
+    /*private void OnManipulationStartedHandler(ManipulationEventData arg0)
     {
         BBox.GetComponent<ObjectManipulator>().enabled = false;
     }
-
-    private void OnManipulationEndedHandler()
+    private void OnManipulationEndedHandler(ManipulationEventData arg0)
     {
+        BBox.GetComponent<ObjectManipulator>().enabled = true;
+
+    }*/
+    public void OnManipulationStartedHandler(SelectEnterEventArgs args)
+    {
+
+        BBox.GetComponent<ObjectManipulator>().enabled = false;
+    }
+
+
+    public void OnManipulationEndedHandler(SelectExitEventArgs args)
+    {
+
         BBox.GetComponent<ObjectManipulator>().enabled = true;
     }
 
 
 }
 
-*/
+
+
+/*
 
 using System.Collections;
 using System;
@@ -381,3 +397,4 @@ public class ObjectGenerationTest : MonoBehaviour
         if (BBox != null) BBox.GetComponent<Collider>().enabled = true;
     }
 }
+*/
