@@ -11,8 +11,8 @@ namespace PassthroughCameraSamples.MultiObjectDetection
     public class DetectionUiTextWritter : MonoBehaviour
     {
         [SerializeField] private Text m_labelInfo;
-        //[SerializeField] private float m_writtingSpeed = 0.00015f;
-        [SerializeField] private float m_writtingSpeed = 0.0003f;
+        [SerializeField] private float m_writtingSpeed = 0.00015f;
+        
         [SerializeField] private float m_writtingInfoPause = 0.005f;
         [SerializeField] private AudioSource m_writtingSound;
 
@@ -50,8 +50,8 @@ namespace PassthroughCameraSamples.MultiObjectDetection
                 {
                     m_writtingTime = m_writtingSpeed;
 
-                    //m_writtingSound?.Play();
-                    m_writtingSound?.PlayOneShot(m_writtingSound.clip);
+                    m_writtingSound?.Play();
+                    //m_writtingSound?.PlayOneShot(m_writtingSound.clip);
 
                     var nextChar = m_currentInfo.Substring(m_currentInfoIndex, 1);
                     m_labelInfo.text += nextChar;

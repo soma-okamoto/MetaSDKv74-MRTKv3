@@ -12027,7 +12027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_labelInfo: {fileID: 2447241005455779024}
-  m_writtingSpeed: 0.0003
+  m_writtingSpeed: 0.00015
   m_writtingInfoPause: 0.005
   m_writtingSound: {fileID: 4852960524084639164}
   OnStartWritting:
@@ -12047,7 +12047,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ScannerUiMenuManager, Assembly-CSharp
-        m_MethodName: set_IsInputActive
+        m_MethodName: 
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12074,7 +12074,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ScannerUiMenuManager, Assembly-CSharp
-        m_MethodName: set_IsInputActive
+        m_MethodName: 
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
