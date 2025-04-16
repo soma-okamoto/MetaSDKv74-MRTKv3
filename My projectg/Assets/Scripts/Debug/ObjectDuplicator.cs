@@ -17,6 +17,8 @@ public class ObjectDuplicator : MonoBehaviour
 
     [Tooltip("複製時のスケール")]
     public Vector3 scale = Vector3.one;
+    // youbotを一時的に非アクティブにしたリスト
+    private List<GameObject> duplicatedYoubots = new List<GameObject>();
 
     public void DuplicateObject()
     {
@@ -53,10 +55,10 @@ public class ObjectDuplicator : MonoBehaviour
             {
                 duplicatedRenderer.subscriber = originalSubscriber;
             }
-            else
-            {
-                UnityEngine.Debug.LogWarning("Rendererかsubscriberが見つかりませんでした");
-            }
+            DeactivateWaypointsInHierarchy(duplicatedObject);
+
+            
+            HandleYoubotActivation(objectToDuplicate, duplicatedObject);
         }
         else
         {
@@ -68,6 +70,7 @@ public class ObjectDuplicator : MonoBehaviour
             DeactivateWaypointsInHierarchy(duplicatedObject);
         }
         SetTopMostFirstActive_OthersInactive();
+        ReactivateYoubots();
     }
     
 
@@ -147,6 +150,48 @@ public class ObjectDuplicator : MonoBehaviour
                 UnityEngine.Debug.Log($"Waypointsを非アクティブ化: {GetHierarchyPath(child)}");
             }
         }
+    }
+    void HandleYoubotActivation(GameObject original, GameObject duplicated)
+    {
+        // 元オブジェクト内のyoubotを探す
+        var originalYoubot = FindYoubotInHierarchy(original);
+        var duplicatedYoubot = FindYoubotInHierarchy(duplicated);
+
+        if (originalYoubot != null && duplicatedYoubot != null)
+        {
+            if (originalYoubot.activeSelf)
+            {
+                duplicatedYoubot.SetActive(false); // 一時的に無効化
+                duplicatedYoubots.Add(duplicatedYoubot); // 後で有効化するために保存
+                UnityEngine.Debug.Log($"複製先の youbot を非アクティブ化: {GetHierarchyPath(duplicatedYoubot.transform)}");
+            }
+        }
+    }
+
+    GameObject FindYoubotInHierarchy(GameObject root)
+    {
+        Transform[] children = root.GetComponentsInChildren<Transform>(true);
+        foreach (Transform t in children)
+        {
+            if (t.name == "youbot")
+            {
+                return t.gameObject;
+            }
+        }
+        return null;
+    }
+
+    void ReactivateYoubots()
+    {
+        foreach (var youbot in duplicatedYoubots)
+        {
+            if (youbot != null)
+            {
+                youbot.SetActive(true);
+                UnityEngine.Debug.Log($"youBot再アクティブ化: {GetHierarchyPath(youbot.transform)}");
+            }
+        }
+        duplicatedYoubots.Clear();
     }
 
 

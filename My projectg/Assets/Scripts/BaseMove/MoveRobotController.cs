@@ -172,6 +172,8 @@ public class MoveRobotController : MonoBehaviour
         newWayPoint_Origin.transform.localPosition = WaypointPositionForOrigin;
         newWayPoint_Origin.transform.localRotation = WaypointRotationForOrigin;
 
+
+
         lastGeneratedWayPoint = newWayPoint;
 
         generatedObjects.Add(newWayPoint);
