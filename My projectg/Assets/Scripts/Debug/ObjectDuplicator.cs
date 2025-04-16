@@ -20,13 +20,15 @@ public class ObjectDuplicator : MonoBehaviour
 
     public void DuplicateObject()
     {
+        GameObject duplicatedObject = null; // ← ここで宣言しておく
+
         if (objectToDuplicate != null)
         {
             // Rotationは元の回転 + 指定回転
             Quaternion newRotation = objectToDuplicate.transform.rotation * Quaternion.Euler(rotationEuler);
 
             // 複製して新しい位置・回転で生成
-            GameObject duplicatedObject = Instantiate(
+            duplicatedObject = Instantiate(
                 objectToDuplicate,
                 objectToDuplicate.transform.position + offset,
                 newRotation
@@ -60,7 +62,11 @@ public class ObjectDuplicator : MonoBehaviour
         {
             UnityEngine.Debug.LogWarning("objectToDuplicateが設定されていません！");
         }
-        
+        // ここで使えるようになる
+        if (duplicatedObject != null)
+        {
+            DeactivateWaypointsInHierarchy(duplicatedObject);
+        }
         SetTopMostFirstActive_OthersInactive();
     }
     
@@ -129,6 +135,18 @@ public class ObjectDuplicator : MonoBehaviour
             t = t.parent;
         }
         return string.Join("/", path);
+    }
+    void DeactivateWaypointsInHierarchy(GameObject root)
+    {
+        Transform[] children = root.GetComponentsInChildren<Transform>(true); // 非アクティブな子も含めて取得
+        foreach (Transform child in children)
+        {
+            if (child.name == "WayPoints")
+            {
+                child.gameObject.SetActive(false);
+                UnityEngine.Debug.Log($"Waypointsを非アクティブ化: {GetHierarchyPath(child)}");
+            }
+        }
     }
 
 

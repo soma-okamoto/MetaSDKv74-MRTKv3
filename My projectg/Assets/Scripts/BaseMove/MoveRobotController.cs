@@ -7,6 +7,8 @@ using MixedReality.Toolkit.Input;
 using Microsoft.MixedReality.OpenXR;
 using static MixedReality.Toolkit.SpatialManipulation.ObjectManipulator;
 using UnityEngine.XR.Interaction.Toolkit;
+using System.Runtime.Serialization;
+using System.Reflection;
 
 public class MoveRobotController : MonoBehaviour
 {
@@ -40,7 +42,7 @@ public class MoveRobotController : MonoBehaviour
     [SerializeField] private UpdateYouBotTransform updateYouBotTransform;
 
     private GameObject lastGeneratedWayPoint = null;
-    private XRGrabInteractable bboxGrabInteractable;
+    
 
     public void PressRobotMoveSettingButton()
     {
@@ -69,18 +71,17 @@ public class MoveRobotController : MonoBehaviour
         //lineRenderer_Origin.SetPosition(0, Origin.transform.position);
 
 
-        YoubotObject.SetActive(true);
-
-        /*// BoundsControl を明示的に有効化する
-        var boundsControl = YoubotObject.GetComponent<BoundsControl>();
-        if (boundsControl != null && !boundsControl.enabled)
-        {
-            Debug.Log("BoundsControl が無効だったので有効化します");
-            boundsControl.enabled = true;
-        }*/
+        
 
         GenerateObject();
-
+      
+        YoubotObject.SetActive(true);
+        // 子の youbot を後から明示的にアクティブ化（もし最初非アクティブにしてた場合）
+        Transform youbot = YoubotObject.transform.Find("youbot");
+        if (youbot != null)
+        {
+            youbot.gameObject.SetActive(true);
+        }
 
 
     }
@@ -97,7 +98,7 @@ public class MoveRobotController : MonoBehaviour
             }
         }
 
-        GenerateObject();
+        //GenerateObject();
         pathPublisher.WayPointObjectList = generatedWayPointLists_Origin;
         pathPublisher.PublishStatus = true;
         updateYouBotTransform.isUpdate = true;
@@ -128,14 +129,14 @@ public class MoveRobotController : MonoBehaviour
     public void OnManipulationStartedHandler(SelectEnterEventArgs args)
     {
         isManipulating = true;
-        bboxGrabInteractable.enabled = false;
+        BBox.GetComponent<ObjectManipulator>().enabled = false;
     }
 
 
     public void OnManipulationEndedHandler(SelectExitEventArgs args)
     {
         isManipulating = false;
-        bboxGrabInteractable.enabled = true;
+        //BBox.GetComponent<ObjectManipulator>().enabled = true;
     }
 
     private void GenerateObject()
@@ -149,7 +150,7 @@ public class MoveRobotController : MonoBehaviour
         newWayPoint.transform.parent = WayPoints.transform;
         newWayPoint.transform.localRotation = Quaternion.identity;
 
-        if (lastGeneratedWayPoint != null)
+      /*  if (lastGeneratedWayPoint != null)
         {
             Vector3 direction = (lastGeneratedWayPoint.transform.position - spawnPosition).normalized;
             Debug.Log(direction);
@@ -159,7 +160,7 @@ public class MoveRobotController : MonoBehaviour
                 newWayPoint.transform.rotation = spawnRotation * Quaternion.Euler(-90, -90, 0);
 
             }
-        }
+        }*/
 
 
 
@@ -177,16 +178,6 @@ public class MoveRobotController : MonoBehaviour
         generatedWayPointLists_Origin.Add(newWayPoint_Origin);
         // LineRendererにポイントを追加
         AddLinePoint(YoubotObject.transform.position, newWayPoint_Origin.transform.position);
-
-        /*// 新コード（XRGrabInteractableに切り替え）
-        var interactable = newWayPoint.GetComponent<XRGrabInteractable>();
-        interactable.selectExited.AddListener(EditRouteObject);
-
-        var interactableOrigin = newWayPoint_Origin.GetComponent<XRGrabInteractable>();
-        interactableOrigin.selectExited.AddListener(EditRouteObject);*/
-
-        /*newWayPoint.GetComponent<XRGrabInteractable>().selectExited.AddListener(EditRouteObject);
-        newWayPoint_Origin.GetComponent<XRGrabInteractable>().selectExited.AddListener(EditRouteObject);*/
         newWayPoint.GetComponent<ObjectManipulator>().selectExited.AddListener(EditRouteObject);
         newWayPoint_Origin.GetComponent<ObjectManipulator>().selectExited.AddListener(EditRouteObject);
 
