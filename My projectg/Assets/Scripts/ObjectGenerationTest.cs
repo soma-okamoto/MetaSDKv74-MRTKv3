@@ -252,7 +252,7 @@ public class ObjectGenerationTest : MonoBehaviour
     public void OnManipulationEndedHandler(SelectExitEventArgs args)
     {
 
-        BBox.GetComponent<ObjectManipulator>().enabled = true;
+        //BBox.GetComponent<ObjectManipulator>().enabled = true;
     }
 
 

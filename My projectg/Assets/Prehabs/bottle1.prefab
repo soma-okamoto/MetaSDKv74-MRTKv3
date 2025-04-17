@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6598120630716868736}
   - component: {fileID: 8746166477251094140}
   - component: {fileID: -7542038300002869051}
-  - component: {fileID: -4604417250059845302}
+  - component: {fileID: -4405595048168629000}
   m_Layer: 0
   m_Name: bottle1
   m_TagString: bottle
@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84fc915d3769a564a85fae9ed9098651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-4604417250059845302
+--- !u!114 &-4405595048168629000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
