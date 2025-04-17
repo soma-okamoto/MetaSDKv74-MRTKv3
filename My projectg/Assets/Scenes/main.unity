@@ -6975,7 +6975,7 @@ MonoBehaviour:
   handType: -1
   proximityType: -1
   executionOrder: 0
-  constraintOnRotation: -1
+  constraintOnRotation: 5
   useLocalSpaceForConstraint: 0
 --- !u!1 &1041691668
 GameObject:
@@ -8859,14 +8859,14 @@ MonoBehaviour:
   boundsVisualsPrefab: {fileID: 5671351296789090341, guid: 7b542306e34a62f4c9a822fcb19b7d99, type: 3}
   boundsCalculationMethod: 0
   includeInactiveObjects: 0
-  overrideBounds: 0
-  boundsOverride: {fileID: 0}
+  overrideBounds: 1
+  boundsOverride: {fileID: 1279096062}
   flattenMode: 1
   boundsPadding: 0.01
   interactable: {fileID: 0}
   toggleHandlesOnClick: 1
   dragToggleThreshold: 0.02
-  target: {fileID: 0}
+  target: {fileID: 1848318713}
   handlesActive: 1
   enabledHandles: 3
   rotateAnchor: 1
@@ -9107,7 +9107,7 @@ MonoBehaviour:
   <OnDisabled>k__BackingField:
     m_PersistentCalls:
       m_Calls: []
-  hostTransform: {fileID: 1279096062}
+  hostTransform: {fileID: 1848318713}
   allowedManipulations: 7
   allowedInteractionTypes: -2147483641
   rigidbodyMovementType: 0
