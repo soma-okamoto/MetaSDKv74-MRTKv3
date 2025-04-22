@@ -2939,6 +2939,139 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &336830077
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 336830082}
+  - component: {fileID: 336830081}
+  - component: {fileID: 336830080}
+  - component: {fileID: 336830079}
+  - component: {fileID: 336830078}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &336830078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336830077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1b579e3ee20a34dbff6c7b782f4a5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subscriber: {fileID: 0}
+  mockSubscriber: {fileID: 336830081}
+  _material: {fileID: 2100000, guid: 044fbcf6602e76c478e3a761da0674af, type: 2}
+  useMockData: 1
+  mockWidth: 0
+  mockHeight: 0
+  mockSpacing: 0
+  pointSize: 1
+  BoundingBox: {fileID: 1039693691}
+  offset: {fileID: 735956891}
+  BBoxSize: {x: 0, y: 0, z: 0}
+  BBoxPos: {x: 0, y: 0, z: 0}
+  StopGetPointCloud: 0
+--- !u!114 &336830079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336830077}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95abbaeefe2f26d47abdfb75c911411d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mockSubscriber: {fileID: 336830081}
+  distanceThreshold: 0.15
+  targetColor: {r: 1, g: 0, b: 0, a: 1}
+  updateInterval: 0.1
+--- !u!23 &336830080
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336830077}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 1745441022}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &336830081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336830077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 098be3acc734dfc49baea002a24a9f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useMockData: 0
+  mockSize: 50
+  mockSpacing: 0.01
+--- !u!4 &336830082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336830077}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.08664584, y: -0.194, z: 0.56519663}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &340241420
 GameObject:
   m_ObjectHideFlags: 0
@@ -3299,7 +3432,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   subscriber: {fileID: 555286872}
+  mockSubscriber: {fileID: 0}
   _material: {fileID: 2100000, guid: 54681d6e66cbcf847b4ac7f48ea5a68c, type: 2}
+  useMockData: 0
+  mockWidth: 0
+  mockHeight: 0
+  mockSpacing: 0
   pointSize: 1
   BoundingBox: {fileID: 1039693691}
   offset: {fileID: 735956891}
@@ -7967,7 +8105,7 @@ Transform:
   m_Children:
   - {fileID: 977927054}
   - {fileID: 1039693688}
-  m_Father: {fileID: 1896846446}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &735956892
 BoxCollider:
@@ -14785,6 +14923,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 791738712976538213, guid: f443144a6d408c34bb8a7d70a73644c4, type: 3}
   m_PrefabInstance: {fileID: 130986713}
   m_PrefabAsset: {fileID: 0}
+--- !u!21 &1745441022
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Unlit/VertexColor
+  m_Shader: {fileID: 4800000, guid: d2fafd88cf56225449a274844451c981, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!224 &1751682677 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8376646494505211229, guid: c6b351a67ceb69140b199996bbbea156, type: 3}
@@ -16403,8 +16569,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 735956891}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1896846447
@@ -19218,6 +19383,7 @@ SceneRoots:
   - {fileID: 274688872}
   - {fileID: 1726942293}
   - {fileID: 1896846446}
+  - {fileID: 735956891}
   - {fileID: 372573367}
   - {fileID: 976219393}
   - {fileID: 700604286}
@@ -19227,3 +19393,4 @@ SceneRoots:
   - {fileID: 702025893}
   - {fileID: 134479225}
   - {fileID: 1443605737}
+  - {fileID: 336830082}

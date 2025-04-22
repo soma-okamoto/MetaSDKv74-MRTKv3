@@ -30,13 +30,13 @@ public class BoundsControlHider : MonoBehaviour
     private void OnGrabStarted(SelectEnterEventArgs args)
     {
         SetAllBoundsHandlesActive(false);
-        Debug.Log("掴んだので全BoundsControlのHandlesを非表示にしました");
+        //Debug.Log("掴んだので全BoundsControlのHandlesを非表示にしました");
     }
 
     private void OnGrabEnded(SelectExitEventArgs args)
     {
         SetAllBoundsHandlesActive(true);
-        Debug.Log("離したので全BoundsControlのHandlesを再表示しました");
+        //Debug.Log("離したので全BoundsControlのHandlesを再表示しました");
     }
 
     private void SetAllBoundsHandlesActive(bool active)
