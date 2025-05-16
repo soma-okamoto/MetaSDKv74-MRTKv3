@@ -19,6 +19,9 @@ public class ObjectDuplicator : MonoBehaviour
     public Vector3 scale = Vector3.one;
     // youbotを一時的に非アクティブにしたリスト
     private List<GameObject> duplicatedYoubots = new List<GameObject>();
+    [Tooltip("複製先の親オブジェクト（空のTransformなど）")]
+    public Transform targetParent;
+
 
     public void DuplicateObject()
     {
@@ -33,7 +36,8 @@ public class ObjectDuplicator : MonoBehaviour
             duplicatedObject = Instantiate(
                 objectToDuplicate,
                 objectToDuplicate.transform.position + offset,
-                newRotation
+                newRotation,
+                targetParent // ← Inspectorで指定されたオブジェクト配下に生成される
             );
 
             duplicatedObject.name = objectToDuplicate.name + "_Copy";
@@ -85,9 +89,16 @@ public class ObjectDuplicator : MonoBehaviour
                 if (child.CompareTag("bottle"))
                 {
                     child.tag = "SubBottle"; // タグ変更
-                    UnityEngine.Debug.Log($"タグ変更: {child.name} → SubBottle");
+                    //UnityEngine.Debug.Log($"タグ変更: {child.name} → SubBottle");
                 }
             }
+            // RadialView制御スクリプトを追加
+            var toggleScript = duplicatedObject.AddComponent<RadialViewToggleOnManipulation>();
+            var manipulator = duplicatedObject.GetComponent<ObjectManipulator>();
+            var radialView = duplicatedObject.transform.parent?.GetComponent<RadialView>();
+
+            toggleScript.interactable = manipulator;
+            toggleScript.radialView = radialView;
 
         }
         SetTopMostFirstActive_OthersInactive();
