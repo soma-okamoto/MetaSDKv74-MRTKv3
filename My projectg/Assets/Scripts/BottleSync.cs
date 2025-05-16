@@ -106,6 +106,10 @@ public class BottleSync : MonoBehaviour
         // Hierarchy 上の順番は Transform 順（for ループ通り）なのでソート不要
         return result;
     }
+    public bool TryGetSubFromMaster(GameObject master, out GameObject sub)
+    {
+        return masterToSubMapping.TryGetValue(master, out sub);
+    }
 
 
 }
