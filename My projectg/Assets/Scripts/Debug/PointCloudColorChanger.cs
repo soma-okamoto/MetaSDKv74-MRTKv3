@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class PointCloudColorChanger : MonoBehaviour
 {
@@ -59,3 +59,4 @@ public class PointCloudColorChanger : MonoBehaviour
         }
     }
 }
+*/

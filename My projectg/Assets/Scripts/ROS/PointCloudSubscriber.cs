@@ -146,6 +146,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RosSharp.RosBridgeClient.MessageTypes.Sensor;
+using System.Diagnostics;
+
+using System.IO;
+//using static System.Net.Mime.MediaTypeNames;
 
 namespace RosSharp.RosBridgeClient
 {
@@ -178,7 +182,7 @@ namespace RosSharp.RosBridgeClient
         {
             if (isMessageReceived)
             {
-                Debug.Log(width);
+                UnityEngine.Debug.Log(width);
                 StartCoroutine(PointCloudRendering());
                 isMessageReceived = false;
             }
@@ -193,7 +197,7 @@ namespace RosSharp.RosBridgeClient
 
             width = (int)message.width;
             height = (int)message.height;
-            Debug.Log("width : " + width.ToString() + " height : " + height.ToString());
+            UnityEngine.Debug.Log("width : " + width.ToString() + " height : " + height.ToString());
 
             row_step = (int)message.row_step;
             point_step = (int)message.point_step;
@@ -245,6 +249,74 @@ namespace RosSharp.RosBridgeClient
 
             yield return null;
         }
+        public void SavePointCloudToCSV(string path)
+        {
+            // ディレクトリが存在しない場合に作成
+            string directory = Path.GetDirectoryName(path);
+            if (!Directory.Exists(directory))
+            {
+                UnityEngine.Debug.LogError("ディレクトリが存在しません: " + directory);
+                Directory.CreateDirectory(directory);
+            }
+
+            // ファイルが存在しない場合の処理は不要にする
+            if (!HasWritePermission(path))
+            {
+                UnityEngine.Debug.LogError("書き込み権限がありません: " + path);
+                return;
+            }
+
+            if (pcl == null || pcl_color == null)
+            {
+                UnityEngine.Debug.LogWarning("No point cloud data to save.");
+                return;
+            }
+
+            using (StreamWriter writer = new StreamWriter(path))
+            {
+                writer.WriteLine("x,y,z,r,g,b");
+                for (int i = 0; i < pcl.Length; i++)
+                {
+                    Vector3 point = pcl[i];
+                    Color color = pcl_color[i];
+                    int r = Mathf.RoundToInt(color.r * 255);
+                    int g = Mathf.RoundToInt(color.g * 255);
+                    int b = Mathf.RoundToInt(color.b * 255);
+                    writer.WriteLine($"{point.x},{point.y},{point.z},{r},{g},{b}");
+                }
+            }
+
+            UnityEngine.Debug.Log("Point cloud saved to: " + path);
+        }
+
+        public void SavePointCloudFromButton()
+        {
+            // 保存先フォルダを変更
+            string folder = "C:/PointCloudSaved";  // ここで保存先を変更
+            if (!Directory.Exists(folder))
+                Directory.CreateDirectory(folder);
+
+            string path = Path.Combine(folder, "pointcloud.csv");
+            SavePointCloudToCSV(path);
+        }
+
+
+
+
+
+        private bool HasWritePermission(string path)
+        {
+            try
+            {
+                using (FileStream fs = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write)) { }
+                return true;
+            }
+            catch (UnauthorizedAccessException)
+            {
+                return false;
+            }
+        }
+
 
         // 任意の点の色を変更するメソッド
         public void UpdatePointColor(int index, Color newColor)

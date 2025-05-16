@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class MockPointCloudSubscriber : MonoBehaviour
 {
@@ -128,4 +128,56 @@ public class MockPointCloudSubscriber : MonoBehaviour
     {
         return new Vector3(mockSize, mockSize, mockSize);
     }
+}
+*/
+
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using UnityEngine;
+
+public class MockPointCloudSubscriber : MonoBehaviour
+{
+    private Vector3[] pcl;
+    private Color[] pcl_color;
+    private Vector2 size;
+
+    public void LoadFromCSV(string filePath)
+    {
+        var pclList = new List<Vector3>();
+        var colorList = new List<Color>();
+
+        if (!File.Exists(filePath))
+        {
+            UnityEngine.Debug.LogError("CSV file not found at: " + filePath);
+            return;
+        }
+
+        string[] lines = File.ReadAllLines(filePath);
+        for (int i = 1; i < lines.Length; i++)  // Skip header
+        {
+            string[] tokens = lines[i].Split(',');
+            if (tokens.Length >= 6 &&
+                float.TryParse(tokens[0], out float x) &&
+                float.TryParse(tokens[1], out float y) &&
+                float.TryParse(tokens[2], out float z) &&
+                int.TryParse(tokens[3], out int r) &&
+                int.TryParse(tokens[4], out int g) &&
+                int.TryParse(tokens[5], out int b))
+            {
+                pclList.Add(new Vector3(x, y, z));
+                colorList.Add(new Color(r / 255f, g / 255f, b / 255f));
+            }
+        }
+
+        pcl = pclList.ToArray();
+        pcl_color = colorList.ToArray();
+        size = new Vector2(Mathf.Sqrt(pcl.Length), Mathf.Sqrt(pcl.Length)); // ‰¼‚ÌƒTƒCƒY„’è
+
+        UnityEngine.Debug.Log("Loaded point cloud from CSV with " + pcl.Length + " points.");
+    }
+
+    public Vector3[] GetPCL() => pcl;
+    public Color[] GetPCLColor() => pcl_color;
+    public Vector2 GetSize() => size;
 }
