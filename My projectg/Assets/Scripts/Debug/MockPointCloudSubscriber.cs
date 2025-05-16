@@ -1,4 +1,4 @@
-/*using UnityEngine;
+using UnityEngine;
 
 public class MockPointCloudSubscriber : MonoBehaviour
 {
@@ -129,9 +129,9 @@ public class MockPointCloudSubscriber : MonoBehaviour
         return new Vector3(mockSize, mockSize, mockSize);
     }
 }
-*/
 
-using System.Collections.Generic;
+
+/*using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using UnityEngine;
@@ -181,3 +181,4 @@ public class MockPointCloudSubscriber : MonoBehaviour
     public Color[] GetPCLColor() => pcl_color;
     public Vector2 GetSize() => size;
 }
+*/
