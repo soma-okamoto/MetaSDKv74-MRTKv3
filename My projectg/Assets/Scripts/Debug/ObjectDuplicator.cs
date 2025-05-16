@@ -37,11 +37,21 @@ public class ObjectDuplicator : MonoBehaviour
             );
 
             duplicatedObject.name = objectToDuplicate.name + "_Copy";
-            // ObjectManipulator を有効化
-            var manipulator = duplicatedObject.GetComponent<ObjectManipulator>();
-            if (manipulator != null)
+            // 複製された BoundingBox 本体のコンポーネントを有効化
+            var bc = duplicatedObject.GetComponent<BoundsControl>();
+            if (bc != null) bc.enabled = true;
+
+            var om = duplicatedObject.GetComponent<ObjectManipulator>();
+            if (om != null) om.enabled = true;
+
+            var col = duplicatedObject.GetComponent<BoxCollider>();
+            if (col != null) col.enabled = true;
+
+            // RotationAxisConstraint を無効化
+            var rotationConstraint = duplicatedObject.GetComponent<RotationAxisConstraint>();
+            if (rotationConstraint != null)
             {
-                manipulator.enabled = true;
+                rotationConstraint.enabled = false;
             }
             // Scaleは指定したものを適用（元のスケールを使いたいなら objectToDuplicate.transform.localScale に変更可）
             duplicatedObject.transform.localScale = scale;
@@ -68,9 +78,28 @@ public class ObjectDuplicator : MonoBehaviour
         if (duplicatedObject != null)
         {
             DeactivateWaypointsInHierarchy(duplicatedObject);
+            // Instantiate直後に複製したBoundingBoxの中のボトルのタグを変更
+            Transform[] allChildren = duplicatedObject.GetComponentsInChildren<Transform>(true);
+            foreach (Transform child in allChildren)
+            {
+                if (child.CompareTag("bottle"))
+                {
+                    child.tag = "SubBottle"; // タグ変更
+                    UnityEngine.Debug.Log($"タグ変更: {child.name} → SubBottle");
+                }
+            }
+
         }
         SetTopMostFirstActive_OthersInactive();
         ReactivateYoubots();
+        //BottleSync に parentB を渡す
+        var bottleSync = FindObjectOfType<BottleSync>();
+        if (bottleSync != null)
+          {
+                bottleSync.SetParentB(duplicatedObject.transform); // ←親として登録
+           }
+
+
     }
     
 

@@ -15,49 +15,47 @@ public class BottleSync : MonoBehaviour
     {
         if (parentA == null || parentB == null)
         {
-            UnityEngine.Debug.LogError("ParentAまたはParentBが設定されていません！");
+            UnityEngine.Debug.Log("ParentAまたはParentBが設定されていません！");
             return;
         }
 
-        // ParentAからすべてのマスターbottleを取得
-        GameObject[] masterBottles = GetChildrenWithTag(parentA, "bottle");
-        // ParentBからすべてのサブbottleを取得
-        GameObject[] subBottles = GetChildrenWithTag(parentB, "SubBottle");
+        List<GameObject> masterList = GetOrderedChildrenWithTag(parentA, "bottle");
+        List<GameObject> subList = GetOrderedChildrenWithTag(parentB, "SubBottle");
 
 
-        // マスターbottleとサブbottleの対応付けを行う
-        foreach (GameObject masterBottle in masterBottles)
-        {
-            foreach (GameObject subBottle in subBottles)
-            {
-                // 名前が一致する場合に対応付けを行う
-                if (masterBottle.name == subBottle.name.Replace("Sub", "Master"))
-                {
-                    masterToSubMapping[masterBottle] = subBottle;
-
-                    // サブbottleの元の色を保存
-                    Renderer subRenderer = subBottle.GetComponent<Renderer>();
-                    if (subRenderer != null)
-                    {
-                        originalColors[subBottle] = subRenderer.material.color;
-                    }
-                    break; // 一致したら次のマスターbottleへ
-                }
-            }
-        }
- 
-
-  /*      // 各マスターbottleの色を保存
-        foreach (GameObject masterBottle in masterToSubMapping.Keys)
-        {
-            Renderer masterRenderer = masterBottle.GetComponent<Renderer>();
-            if (masterRenderer != null)
-            {
-                masterColors[masterBottle] = masterRenderer.material.color;
-            }
-        }*/
+        
 
     }
+
+    public void SetParentB(Transform newParentB)
+    {
+        parentB = newParentB;
+
+        // 並び順に従って取得
+        List<GameObject> masterList = GetOrderedChildrenWithTag(parentA, "bottle");
+        List<GameObject> subList = GetOrderedChildrenWithTag(parentB, "SubBottle");
+
+        masterToSubMapping.Clear();
+        originalColors.Clear();
+
+        int pairCount = Mathf.Min(masterList.Count, subList.Count);
+        for (int i = 0; i < pairCount; i++)
+        {
+            GameObject master = masterList[i];
+            GameObject sub = subList[i];
+
+            masterToSubMapping[master] = sub;
+
+            Renderer subRenderer = sub.GetComponent<Renderer>();
+            if (subRenderer != null)
+            {
+                originalColors[sub] = subRenderer.material.color;
+            }
+        }
+    }
+
+
+
 
     void Update()
     {
@@ -72,24 +70,7 @@ public class BottleSync : MonoBehaviour
                 Renderer masterRenderer = masterBottle.GetComponent<Renderer>();
                 Renderer subRenderer = subBottle.GetComponent<Renderer>();
 
-        /*        // マスターの色をサブに反映
-                if (masterRenderer != null && subRenderer != null)
-                {
-                    Color masterColor = masterRenderer.material.color;
-
-                    // サブの色をマスターと同期
-                    subRenderer.material.color = masterColor;
-
-                    // サブbottleがアウトラインを持つ場合、アウトラインの色も同期
-                    Outline masterOutline = masterBottle.GetComponent<Outline>();
-                    Outline subOutline = subBottle.GetComponent<Outline>();
-
-                    if (masterOutline != null && subOutline != null)
-                    {
-                        subOutline.OutlineColor = masterOutline.OutlineColor;
-                        subOutline.OutlineWidth = masterOutline.OutlineWidth;
-                    }
-                }*/
+        
 
                 // マスターの位置と回転をサブに反映
                 Transform masterParent = masterBottle.transform.parent;
@@ -105,9 +86,10 @@ public class BottleSync : MonoBehaviour
 
 
     // 指定された親オブジェクトの子オブジェクトの中から特定のタグを持つものを取得
-    private GameObject[] GetChildrenWithTag(Transform parent, string tag)
+    private List<GameObject> GetOrderedChildrenWithTag(Transform parent, string tag)
     {
         List<GameObject> result = new List<GameObject>();
+
         foreach (Transform child in parent)
         {
             if (child.CompareTag(tag))
@@ -115,7 +97,11 @@ public class BottleSync : MonoBehaviour
                 result.Add(child.gameObject);
             }
         }
-        return result.ToArray();
+
+        // Hierarchy 上の順番は Transform 順（for ループ通り）なのでソート不要
+        return result;
     }
+
+
 }
 
