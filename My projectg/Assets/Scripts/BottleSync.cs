@@ -10,6 +10,7 @@ public class BottleSync : MonoBehaviour
     private Dictionary<GameObject, GameObject> masterToSubMapping = new Dictionary<GameObject, GameObject>();
     private Dictionary<GameObject, Color> masterColors = new Dictionary<GameObject, Color>();
     private Dictionary<GameObject, Color> originalColors = new Dictionary<GameObject, Color>();
+   
 
     void Start()
     {
@@ -55,6 +56,10 @@ public class BottleSync : MonoBehaviour
     }
 
 
+    public Dictionary<GameObject, GameObject> GetMasterToSubMapping()
+    {
+        return masterToSubMapping;
+    }
 
 
     void Update()
