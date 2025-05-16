@@ -282,7 +282,7 @@ public class handTracking : MonoBehaviour
             // “_B‚ğ“_A‚©‚çminDistance‚¾‚¯—£‚ê‚½ˆÊ’u‚É’²®
             pose = origin.transform.localPosition + direction * minDistance;
         }
-        //print(pose);
+        print(pose);
         return pose;
     }
 

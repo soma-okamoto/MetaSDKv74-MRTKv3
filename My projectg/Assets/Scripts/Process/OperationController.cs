@@ -13,7 +13,7 @@ public class OperationController : MonoBehaviour
     [SerializeField] private GameObject rosConnector;
     //s[SerializeField] private GameObject mark;
     [SerializeField] private ObjectGenerationTest objectGenerationTest;
-    [SerializeField] private TextMeshPro OperationUI;
+    //[SerializeField] private TextMeshPro OperationUI;
     [SerializeField] private GameObject BBox;
 
     
@@ -43,7 +43,7 @@ public class OperationController : MonoBehaviour
     {
         //rosConnector.GetComponent<RosSharp.RosBridgeClient.BaseMovePublisher>().enabled = false;
         //mark.SetActive(true);
-        OperationUI.text = "Start Operation";
+        //OperationUI.text = "Start Operation";
         Invoke("operation", 3f);
         objectGenerationTest.enabled = false;
     }
