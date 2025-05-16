@@ -36,6 +36,6 @@ public class InteractManager : MonoBehaviour
         var outline = obj.GetComponent<OutlineBehaviour>();
         if (outline != null) outline.enabled = true;
 
-        obj.layer = LayerMask.NameToLayer("bottole"); // Å© typoíçà”ÅF"bottle"ÅH
+        obj.layer = LayerMask.NameToLayer("bottole"); 
     }
 }
