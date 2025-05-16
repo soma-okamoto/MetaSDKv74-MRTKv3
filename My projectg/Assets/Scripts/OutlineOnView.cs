@@ -36,6 +36,19 @@ public class OutlineOnView : MonoBehaviour
             raycasted = hitObj.collider.gameObject;
         }
 
-        hitObject = grabbed ?? raycasted;
+        
+        if (grabbed != null && grabbed.CompareTag("bottle"))
+        {
+            hitObject = grabbed;
+        }
+        else if (raycasted != null && raycasted.CompareTag("bottle"))
+        {
+            hitObject = raycasted;
+        }
+        else
+        {
+            hitObject = null; 
+        }
     }
+
 }
