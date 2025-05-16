@@ -11,7 +11,7 @@ namespace PassthroughCameraSamples.MultiObjectDetection
     public class DetectionUiTextWritter : MonoBehaviour
     {
         [SerializeField] private Text m_labelInfo;
-        [SerializeField] private float m_writtingSpeed = 0.00015f;
+        [SerializeField] private float m_writtingSpeed = 0.015f;
         
         [SerializeField] private float m_writtingInfoPause = 0.005f;
         [SerializeField] private AudioSource m_writtingSound;
@@ -23,6 +23,10 @@ namespace PassthroughCameraSamples.MultiObjectDetection
         private bool m_isWritting = false;
         private string m_currentInfo = "";
         private int m_currentInfoIndex = 0;
+
+        [SerializeField] private int m_soundPlayInterval = 5; // ‰½•¶Žš‚²‚Æ‚É‰¹‚ð–Â‚ç‚·‚©
+        private int m_charCountSinceLastSound = 0;
+
 
         private void Start()
         {
@@ -50,11 +54,15 @@ namespace PassthroughCameraSamples.MultiObjectDetection
                 {
                     m_writtingTime = m_writtingSpeed;
 
-                    m_writtingSound?.Play();
-                    //m_writtingSound?.PlayOneShot(m_writtingSound.clip);
-
                     var nextChar = m_currentInfo.Substring(m_currentInfoIndex, 1);
                     m_labelInfo.text += nextChar;
+
+                    m_charCountSinceLastSound++;
+                    if (m_charCountSinceLastSound >= m_soundPlayInterval)
+                    {
+                        m_writtingSound?.PlayOneShot(m_writtingSound.clip);
+                        m_charCountSinceLastSound = 0;
+                    }
 
                     if (nextChar == ":")
                     {
@@ -73,6 +81,7 @@ namespace PassthroughCameraSamples.MultiObjectDetection
                     m_writtingTime -= Time.deltaTime;
                 }
             }
+
         }
 
         private void SetWrittingConfig()
