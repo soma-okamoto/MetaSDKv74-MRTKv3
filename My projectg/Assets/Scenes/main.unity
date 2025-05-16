@@ -13516,6 +13516,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rayManager: {fileID: 1451371358}
+  PickColor: {r: 2.226415, g: 1.8067567, b: 0.24154507, a: 0}
+  OtherColor: {r: 0.21698111, g: 0.17706478, b: 0.17706478, a: 1}
+  OriginalColor: {r: 0, g: 0, b: 0, a: 0}
+  fadeSpeed: 5
 --- !u!1 &1307264826
 GameObject:
   m_ObjectHideFlags: 0
@@ -20313,8 +20317,8 @@ SceneRoots:
   - {fileID: 108190318}
   - {fileID: 1848318713}
   - {fileID: 264591367}
-  - {fileID: 702025893}
   - {fileID: 1798514035}
+  - {fileID: 702025893}
   - {fileID: 134479225}
   - {fileID: 1443605737}
   - {fileID: 336830082}
