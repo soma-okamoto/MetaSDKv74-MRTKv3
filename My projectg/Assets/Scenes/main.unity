@@ -3020,7 +3020,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1082800132}
+  - {fileID: 1415998409}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8267,19 +8267,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5145485273924157122, guid: a8df832ff62941c40b056cce151ff315, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.1917
+      value: 0.18931633
       objectReference: {fileID: 0}
     - target: {fileID: 5145485273924157122, guid: a8df832ff62941c40b056cce151ff315, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0077
+      value: -0.0691
       objectReference: {fileID: 0}
     - target: {fileID: 5145485273924157122, guid: a8df832ff62941c40b056cce151ff315, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.047
+      value: -0.0121
       objectReference: {fileID: 0}
     - target: {fileID: 5145485273924157122, guid: a8df832ff62941c40b056cce151ff315, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9878176
+      value: 0.99763125
       objectReference: {fileID: 0}
     - target: {fileID: 5145485273924157122, guid: a8df832ff62941c40b056cce151ff315, type: 3}
       propertyPath: m_LocalRotation.x
@@ -8287,7 +8287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5145485273924157122, guid: a8df832ff62941c40b056cce151ff315, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.15561639
+      value: 0.0687891
       objectReference: {fileID: 0}
     - target: {fileID: 5145485273924157122, guid: a8df832ff62941c40b056cce151ff315, type: 3}
       propertyPath: m_LocalRotation.z
@@ -8299,7 +8299,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5145485273924157122, guid: a8df832ff62941c40b056cce151ff315, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 17.905
+      value: 7.889
       objectReference: {fileID: 0}
     - target: {fileID: 5145485273924157122, guid: a8df832ff62941c40b056cce151ff315, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -9504,7 +9504,7 @@ Transform:
   m_GameObject: {fileID: 936849529}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9523,17 +9523,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   updateLinkedTransform: 0
-  moveLerpTime: 0.3
-  rotateLerpTime: 0.3
+  moveLerpTime: 0.5
+  rotateLerpTime: 0.5
   scaleLerpTime: 0
   maintainScaleOnInitialization: 1
   smoothing: 1
   lifetime: 0
   referenceDirection: 1
-  minDistance: 0.2
-  maxDistance: 2
+  minDistance: 0.1
+  maxDistance: 3
   minViewDegrees: 0
-  maxViewDegrees: 30
+  maxViewDegrees: 10
   aspectV: 1
   ignoreAngleClamp: 0
   ignoreDistanceClamp: 0
@@ -10961,34 +10961,6 @@ Transform:
   - {fileID: 340241421}
   m_Father: {fileID: 1863723112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &1082800132
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit/VertexColor
-  m_Shader: {fileID: 4800000, guid: d2fafd88cf56225449a274844451c981, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Ints: []
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &1085346861
 GameObject:
   m_ObjectHideFlags: 0
@@ -14335,6 +14307,34 @@ Transform:
   - {fileID: 1085346862}
   m_Father: {fileID: 85781546}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!21 &1415998409
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Unlit/VertexColor
+  m_Shader: {fileID: 4800000, guid: d2fafd88cf56225449a274844451c981, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &1416802444
 GameObject:
   m_ObjectHideFlags: 0
