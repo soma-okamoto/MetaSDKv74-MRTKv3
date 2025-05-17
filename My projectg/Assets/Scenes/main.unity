@@ -10181,8 +10181,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToDuplicate: {fileID: 1039693687}
-  offset: {x: -0.4, y: 0.6, z: 1}
-  rotationEuler: {x: -75, y: 0, z: -15}
+  offset: {x: -0.45, y: 0.6, z: 1}
+  rotationEuler: {x: -90, y: 0, z: -15}
   scale: {x: 0.25, y: 0.25, z: 0.25}
   targetParent: {fileID: 936849532}
 --- !u!1 &976219391
