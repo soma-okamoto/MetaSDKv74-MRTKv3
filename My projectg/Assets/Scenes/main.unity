@@ -2204,7 +2204,7 @@ MonoBehaviour:
   YoubotObject: {fileID: 1248380703}
   BBox: {fileID: 1039693687}
   WayPointObject: {fileID: 7743774048998969609, guid: cb8fb3e32fe4c4941b6f3b680b30f15c, type: 3}
-  lineRendererPrefab: {fileID: 3249351231604291504, guid: 7937d20a645c0f248813370be46b7532, type: 3}
+  lineRendererPrefab: {fileID: 8161985710151600394, guid: ed2fcf6655f07924a8ef9e7c7d343323, type: 3}
   WayPoints: {fileID: 1849181408}
   Origin: {fileID: 1848318712}
   updateYouBotTransform: {fileID: 264591364}
@@ -2256,7 +2256,7 @@ MonoBehaviour:
   _pathSubscriber: {fileID: 555286866}
   Origin: {fileID: 1849181408}
   _pathPublisher: {fileID: 555286867}
-  LineRenderer: {fileID: 3249351231604291504, guid: 7937d20a645c0f248813370be46b7532, type: 3}
+  LineRenderer: {fileID: 8161985710151600394, guid: ed2fcf6655f07924a8ef9e7c7d343323, type: 3}
 --- !u!4 &264591367
 Transform:
   m_ObjectHideFlags: 0
@@ -2978,7 +2978,6 @@ GameObject:
   - component: {fileID: 336830082}
   - component: {fileID: 336830081}
   - component: {fileID: 336830080}
-  - component: {fileID: 336830079}
   - component: {fileID: 336830078}
   m_Layer: 0
   m_Name: PointClooudDebug
@@ -3012,18 +3011,6 @@ MonoBehaviour:
   BBoxSize: {x: 0, y: 0, z: 0}
   BBoxPos: {x: 0, y: 0, z: 0}
   StopGetPointCloud: 0
---- !u!114 &336830079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 336830077}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95abbaeefe2f26d47abdfb75c911411d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &336830080
 MeshRenderer:
   m_ObjectHideFlags: 0
