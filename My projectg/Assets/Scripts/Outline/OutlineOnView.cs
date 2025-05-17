@@ -12,7 +12,11 @@ public class OutlineOnView : MonoBehaviour
     public Camera playerCamera;
     [SerializeField]private float maxRaycastDistance = 0.75f;
     private RaycastHit hitObj;
-    
+
+    [SerializeField, Tooltip("掴んだときに表示するオブジェクト")]
+    private GameObject targetUI;  // Inspector で表示対象のUIを指定
+
+
     public GameObject hitObject { get; private set; }  // 他スクリプトから取得可能に
 
     private GameObject GetCurrentlyGrabbedObject()
@@ -36,10 +40,12 @@ public class OutlineOnView : MonoBehaviour
             raycasted = hitObj.collider.gameObject;
         }
 
-        
+        /*
         if (grabbed != null && grabbed.CompareTag("bottle"))
         {
             hitObject = grabbed;
+            //ここに任意のオブジェクトを表示させるコード、上でInspecter指定、掴んでないときは消すコード
+
         }
         else if (raycasted != null && raycasted.CompareTag("bottle"))
         {
@@ -48,6 +54,33 @@ public class OutlineOnView : MonoBehaviour
         else
         {
             hitObject = null; 
+        }*/
+
+        if (grabbed != null && grabbed.CompareTag("bottle"))
+        {
+            hitObject = grabbed;
+
+            //  掴んでいるときは UI 表示
+            if (targetUI != null && !targetUI.activeSelf)
+            {
+                targetUI.SetActive(true);
+            }
+        }
+        else
+        {
+            if (targetUI != null && targetUI.activeSelf)
+            {
+                targetUI.SetActive(false);
+            }
+
+            if (raycasted != null && raycasted.CompareTag("bottle"))
+            {
+                hitObject = raycasted;
+            }
+            else
+            {
+                hitObject = null;
+            }
         }
     }
 
