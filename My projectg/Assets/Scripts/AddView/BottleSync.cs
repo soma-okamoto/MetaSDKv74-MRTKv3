@@ -10,7 +10,8 @@ public class BottleSync : MonoBehaviour
     private Dictionary<GameObject, GameObject> masterToSubMapping = new Dictionary<GameObject, GameObject>();
     private Dictionary<GameObject, Color> masterColors = new Dictionary<GameObject, Color>();
     private Dictionary<GameObject, Color> originalColors = new Dictionary<GameObject, Color>();
-   
+    private Dictionary<PointCloudRenderer, PointCloudRenderer> masterPCLToSubPCL = new();
+
 
     void Start()
     {
@@ -22,9 +23,17 @@ public class BottleSync : MonoBehaviour
 
         List<GameObject> masterList = GetOrderedChildrenWithTag(parentA, "bottle");
         List<GameObject> subList = GetOrderedChildrenWithTag(parentB, "SubBottle");
+        // PointCloudRenderer 同士も順序対応でペアリング
+        PointCloudRenderer[] masterPCLs = parentA.GetComponentsInChildren<PointCloudRenderer>();
+        PointCloudRenderer[] subPCLs = parentB.GetComponentsInChildren<PointCloudRenderer>();
+
+        int pclPairCount = Mathf.Min(masterPCLs.Length, subPCLs.Length);
+        for (int i = 0; i < pclPairCount; i++)
+        {
+            masterPCLToSubPCL[masterPCLs[i]] = subPCLs[i];
+        }
 
 
-        
 
     }
 
@@ -53,6 +62,16 @@ public class BottleSync : MonoBehaviour
                 originalColors[sub] = subRenderer.material.color;
             }
         }
+        // SetParentB の末尾にこれがあるか
+        PointCloudRenderer[] masterPCLs = parentA.GetComponentsInChildren<PointCloudRenderer>();
+        PointCloudRenderer[] subPCLs = parentB.GetComponentsInChildren<PointCloudRenderer>();
+        masterPCLToSubPCL.Clear();
+        for (int i = 0; i < Mathf.Min(masterPCLs.Length, subPCLs.Length); i++)
+        {
+            masterPCLToSubPCL[masterPCLs[i]] = subPCLs[i];
+        }
+
+
     }
 
 
@@ -89,6 +108,16 @@ public class BottleSync : MonoBehaviour
         }
     }
 
+    public GameObject GetMasterFromSub(GameObject sub)
+    {
+        foreach (var kvp in masterToSubMapping)
+        {
+            if (kvp.Value == sub)
+                return kvp.Key;
+        }
+        return null;
+    }
+
 
     // 指定された親オブジェクトの子オブジェクトの中から特定のタグを持つものを取得
     private List<GameObject> GetOrderedChildrenWithTag(Transform parent, string tag)
@@ -110,6 +139,41 @@ public class BottleSync : MonoBehaviour
     {
         return masterToSubMapping.TryGetValue(master, out sub);
     }
+
+    public PointCloudRenderer GetSubPointCloud(PointCloudRenderer masterPCL)
+    {
+        masterPCLToSubPCL.TryGetValue(masterPCL, out var sub);
+        return sub;
+    }
+
+    public PointCloudRenderer GetMasterPointCloud(PointCloudRenderer subPCL)
+    {
+        foreach (var kvp in masterPCLToSubPCL)
+        {
+            if (kvp.Value == subPCL)
+                return kvp.Key;
+        }
+        return null;
+    }
+    // SubBottle（＝このスクリプトがついてるGameObject） → 対応する Sub の PointCloudRenderer を取得
+    public PointCloudRenderer GetSubPointCloudFromSubBottle(GameObject subBottle)
+    {
+        return subBottle.GetComponentInChildren<PointCloudRenderer>();
+    }
+
+    private GameObject currentHitObject;
+
+    public void SetCurrentHitObject(GameObject obj)
+    {
+        currentHitObject = obj;
+    }
+
+    public GameObject GetCurrentHitObject()
+    {
+        return currentHitObject;
+    }
+
+
 
 
 }

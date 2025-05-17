@@ -15,6 +15,7 @@ public class OutlineOnView : MonoBehaviour
 
     [SerializeField, Tooltip("掴んだときに表示するオブジェクト")]
     private GameObject targetUI;  // Inspector で表示対象のUIを指定
+    public BottleSync bottleSync; // ← Inspector でアサイン
 
 
     public GameObject hitObject { get; private set; }  // 他スクリプトから取得可能に
@@ -40,21 +41,10 @@ public class OutlineOnView : MonoBehaviour
             raycasted = hitObj.collider.gameObject;
         }
 
-        /*
-        if (grabbed != null && grabbed.CompareTag("bottle"))
-        {
-            hitObject = grabbed;
-            //ここに任意のオブジェクトを表示させるコード、上でInspecter指定、掴んでないときは消すコード
 
-        }
-        else if (raycasted != null && raycasted.CompareTag("bottle"))
-        {
-            hitObject = raycasted;
-        }
-        else
-        {
-            hitObject = null; 
-        }*/
+        
+
+
 
         if (grabbed != null && grabbed.CompareTag("bottle"))
         {
@@ -82,6 +72,12 @@ public class OutlineOnView : MonoBehaviour
                 hitObject = null;
             }
         }
+
+        if (hitObject != null && bottleSync != null)
+        {
+            bottleSync.SetCurrentHitObject(hitObject);
+        }
+
     }
     public GameObject GetTargetUI()
     {
