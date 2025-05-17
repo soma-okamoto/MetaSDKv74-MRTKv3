@@ -222,7 +222,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 18748300}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5b93ff95d682c04a9e6f53ea656d6c5, type: 3}
   m_Name: 
@@ -1444,6 +1444,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100161416063114334, guid: 4d7e2f87fefe0ba468719b15288b46e7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 404949538145338360, guid: 4d7e2f87fefe0ba468719b15288b46e7, type: 3}
       propertyPath: opaqueDisplay.clearMode
       value: 2
@@ -1593,6 +1597,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bindingProfile: {fileID: 11400000, guid: c2554c7933796464c965ae0c4acf9561, type: 2}
+--- !u!21 &212276099
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Unlit/VertexColor
+  m_Shader: {fileID: 4800000, guid: d2fafd88cf56225449a274844451c981, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &219134606
 GameObject:
   m_ObjectHideFlags: 0
@@ -2954,7 +2986,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &336830078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3012,7 +3044,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2129362008}
+  - {fileID: 212276099}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5162,7 +5194,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Distance: X cm'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 533bdd8d5c92b52448ee2ecf7bd828a4, type: 2}
   m_sharedMaterial: {fileID: -1005824763306460071, guid: 533bdd8d5c92b52448ee2ecf7bd828a4, type: 2}
@@ -8943,7 +8975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5145485273924157123, guid: a8df832ff62941c40b056cce151ff315, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5145485274120137997, guid: a8df832ff62941c40b056cce151ff315, type: 3}
       propertyPath: m_IsActive
@@ -9126,6 +9158,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5145485273924157123, guid: a8df832ff62941c40b056cce151ff315, type: 3}
       insertIndex: -1
       addedObject: {fileID: 521549241}
+    - targetCorrespondingSourceObject: {fileID: 8635523128530946366, guid: a8df832ff62941c40b056cce151ff315, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: a8df832ff62941c40b056cce151ff315, type: 3}
 --- !u!1 &746915043
 GameObject:
@@ -10217,7 +10252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5145485273924157123, guid: a8df832ff62941c40b056cce151ff315, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5145485274120137997, guid: a8df832ff62941c40b056cce151ff315, type: 3}
       propertyPath: m_IsActive
@@ -10585,7 +10620,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 191803138572408222, guid: b7b55b04f2004024fba97cc25b2cde3e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: b7b55b04f2004024fba97cc25b2cde3e, type: 3}
 --- !u!1 &830853267
 GameObject:
@@ -10735,7 +10773,7 @@ MonoBehaviour:
   lifetime: 0
   referenceDirection: 1
   minDistance: 0.1
-  maxDistance: 3
+  maxDistance: 2
   minViewDegrees: 0
   maxViewDegrees: 10
   aspectV: 1
@@ -17608,6 +17646,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1798514035}
+  - component: {fileID: 1798514036}
   m_Layer: 0
   m_Name: Outline+ColorManager
   m_TagString: Untagged
@@ -17635,6 +17674,23 @@ Transform:
   - {fileID: 1593608286}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1798514036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798514034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec5944936d8d533409cd0c76e7a49a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointCloudRenderer: {fileID: 336830078}
+  outlineOnView: {fileID: 1451371358}
+  distanceText: {fileID: 551348782}
+  checkInterval: 0.025
+  linePrefab: {fileID: 92614312893926596, guid: e89433f39cac4ed4296294771bf76552, type: 3}
 --- !u!1 &1818382077
 GameObject:
   m_ObjectHideFlags: 0
@@ -20136,34 +20192,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7b55b04f2004024fba97cc25b2cde3e, type: 3}
---- !u!21 &2129362008
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit/VertexColor
-  m_Shader: {fileID: 4800000, guid: d2fafd88cf56225449a274844451c981, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Ints: []
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &4304867412200100
 GameObject:
   m_ObjectHideFlags: 0

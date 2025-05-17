@@ -171,5 +171,47 @@ public class PointCloudRenderer : MonoBehaviour
             BBoxPos = BoundingBox.transform.localPosition;
         }
     }
+    public Vector3[] GetPointCloud()
+    {
+        return positions;
+    }
+
+
+    public Color[] GetColors()
+    {
+        return colours;
+    }
+
+    public void UpdateColors(Color[] newColors)
+    {
+        colours = newColors;
+        if (mesh != null && colours != null)
+        {
+            mesh.colors = colours;
+        }
+    }
+
+    public int GetClosestPointIndex(Vector3 targetPos)
+    {
+        if (positions == null || positions.Length == 0)
+            return -1;
+
+        float minDistSqr = float.MaxValue;
+        int closestIndex = -1;
+
+        for (int i = 0; i < positions.Length; i++)
+        {
+            float dist = (positions[i] - targetPos).sqrMagnitude;
+            if (dist < minDistSqr)
+            {
+                minDistSqr = dist;
+                closestIndex = i;
+            }
+        }
+
+        return closestIndex;
+    }
+
+
 }
 

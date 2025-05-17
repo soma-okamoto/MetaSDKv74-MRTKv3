@@ -83,5 +83,10 @@ public class OutlineOnView : MonoBehaviour
             }
         }
     }
+    public GameObject GetTargetUI()
+    {
+        return targetUI;
+    }
+
 
 }
