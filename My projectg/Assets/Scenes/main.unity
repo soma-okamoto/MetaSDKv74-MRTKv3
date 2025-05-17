@@ -1478,34 +1478,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 51949643}
   m_SourcePrefab: {fileID: 100100000, guid: 4d7e2f87fefe0ba468719b15288b46e7, type: 3}
---- !u!21 &178429961
-Material:
-  serializedVersion: 8
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit/VertexColor
-  m_Shader: {fileID: 4800000, guid: d2fafd88cf56225449a274844451c981, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
-  m_InvalidKeywords: []
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_LockedProperties: 
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs: []
-    m_Ints: []
-    m_Floats: []
-    m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-  m_BuildTextureStacks: []
 --- !u!1 &195673669
 GameObject:
   m_ObjectHideFlags: 0
@@ -2280,7 +2252,7 @@ PrefabInstance:
     - target: {fileID: 8376646494505211226, guid: c6b351a67ceb69140b199996bbbea156, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 976219397}
+      objectReference: {fileID: 936849536}
     - target: {fileID: 8376646494505211226, guid: c6b351a67ceb69140b199996bbbea156, type: 3}
       propertyPath: <OnClicked>k__BackingField.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2966,7 +2938,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 178429961}
+  - {fileID: 1965855456}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10094,6 +10066,7 @@ GameObject:
   - component: {fileID: 936849534}
   - component: {fileID: 936849533}
   - component: {fileID: 936849535}
+  - component: {fileID: 936849536}
   m_Layer: 0
   m_Name: AddViewManager
   m_TagString: Untagged
@@ -10195,6 +10168,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactable: {fileID: 0}
   radialView: {fileID: 936849533}
+--- !u!114 &936849536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936849529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5984a88f95305d46a677dfd640d0892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectToDuplicate: {fileID: 1039693687}
+  offset: {x: -0.4, y: 0.6, z: 1}
+  rotationEuler: {x: -75, y: 0, z: -15}
+  scale: {x: 0.25, y: 0.25, z: 0.25}
+  targetParent: {fileID: 936849532}
 --- !u!1 &976219391
 GameObject:
   m_ObjectHideFlags: 0
@@ -10208,7 +10198,6 @@ GameObject:
   - component: {fileID: 976219394}
   - component: {fileID: 976219395}
   - component: {fileID: 976219396}
-  - component: {fileID: 976219397}
   - component: {fileID: 976219399}
   - component: {fileID: 976219398}
   - component: {fileID: 976219400}
@@ -10288,23 +10277,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetObject: {fileID: 869039619}
---- !u!114 &976219397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 976219391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5984a88f95305d46a677dfd640d0892, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectToDuplicate: {fileID: 1039693687}
-  offset: {x: 0.4, y: 0.4, z: 1}
-  rotationEuler: {x: -90, y: 0, z: 0}
-  scale: {x: 0.5, y: 0.5, z: 0.5}
-  targetParent: {fileID: 936849532}
 --- !u!114 &976219398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19096,6 +19068,34 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952030332}
   m_Mesh: {fileID: 4300000, guid: fbc47027e54e49848fdfd6d5e20510e7, type: 3}
+--- !u!21 &1965855456
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Unlit/VertexColor
+  m_Shader: {fileID: 4800000, guid: d2fafd88cf56225449a274844451c981, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs: []
+    m_Ints: []
+    m_Floats: []
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &1989710563
 GameObject:
   m_ObjectHideFlags: 0
