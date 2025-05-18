@@ -413,8 +413,8 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.xr.hands": {
-      "version": "1.4.0",
-      "depth": 1,
+      "version": "1.5.1",
+      "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.modules.xr": "1.0.0",
@@ -491,6 +491,12 @@
         "com.unity.render-pipelines.universal": "7.0.0"
       },
       "url": "https://registry.npmjs.org"
+    },
+    "jp.lilxyzw.liltoon": {
+      "version": "file:jp.lilxyzw.liltoon",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
     },
     "org.mixedrealitytoolkit.accessibility": {
       "version": "file:MixedReality/org.mixedrealitytoolkit.accessibility-1.0.3-pre.20.tgz",
