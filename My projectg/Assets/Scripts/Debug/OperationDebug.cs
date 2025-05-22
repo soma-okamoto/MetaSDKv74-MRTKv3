@@ -8,7 +8,7 @@ public class OperationDebug : MonoBehaviour
     // Start is called before the first frame update
     public GameObject targetObject; // 対象のオブジェクト
 
-    public void ToggleActive()
+    public void ActiveReverse()
     {
         if (targetObject != null)
         {
@@ -17,7 +17,7 @@ public class OperationDebug : MonoBehaviour
             
         }
     }
-    public void Active()
+    public void ToggleActive()
     {
         if (targetObject != null)
         {
@@ -26,7 +26,7 @@ public class OperationDebug : MonoBehaviour
         }
     }
 
-    public void False()
+    public void ToggleFalse()
     {
         if (targetObject != null)
         {
