@@ -3,7 +3,7 @@ using UnityEngine;
 using MixedReality.Toolkit.SpatialManipulation;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityFx.Outline;
+
 using MixedReality.Toolkit.SpatialManipulation;
 using MixedReality.Toolkit.Input;
 

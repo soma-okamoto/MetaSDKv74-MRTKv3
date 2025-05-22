@@ -1,11 +1,11 @@
 
 using UnityEngine;
-using UnityFx.Outline;
+//using UnityFx.Outline;
 using System.Collections.Generic;
 
 
 public class InteractManager : MonoBehaviour
-{
+{/*
     public OutlineOnView _rayManager;
     private GameObject currentTarget;
     public BottleSync bottleSync; // Å© Inspector Ç≈ÉAÉTÉCÉì
@@ -64,6 +64,6 @@ public class InteractManager : MonoBehaviour
                 sub.layer = LayerMask.NameToLayer("bottole");
             }
         }
-    }
+    }*/
 }
 
