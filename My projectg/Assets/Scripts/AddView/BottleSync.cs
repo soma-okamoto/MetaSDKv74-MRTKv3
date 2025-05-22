@@ -17,7 +17,7 @@ public class BottleSync : MonoBehaviour
     {
         if (parentA == null || parentB == null)
         {
-            UnityEngine.Debug.Log("ParentA‚Ü‚½‚ÍParentB‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñI");
+            //UnityEngine.Debug.Log("ParentA‚Ü‚½‚ÍParentB‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñI");
             return;
         }
 
